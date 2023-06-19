@@ -1,0 +1,31 @@
+<table mat-table [dataSource]="reservationsList" class="mat-elevation-z8">
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="equipment">
+        <th mat-header-cell *matHeaderCellDef> Equipment </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.equipment.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef> Notes </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.notes}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pid">
+        <th mat-header-cell *matHeaderCellDef> PID </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.user.pid}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete_button">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let reservation">
+            <button mat-raised-button color="primary" (click)="deleteReservation(reservation.id)">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>
